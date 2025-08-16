@@ -74,8 +74,11 @@ else
 fi
 
 # Check Python version
-PYTHON_VER=$(python3 --version | cut -d" " -f2 | cut -d"." -f1,2)
-if [[ $(echo "$PYTHON_VER >= 3.9" | bc -l) -eq 0 ]]; then
+PYTHON_VER=$(python3 --version | cut -d" " -f2)
+PYTHON_MAJOR=$(echo $PYTHON_VER | cut -d"." -f1)
+PYTHON_MINOR=$(echo $PYTHON_VER | cut -d"." -f2)
+
+if [[ $PYTHON_MAJOR -lt 3 ]] || [[ $PYTHON_MAJOR -eq 3 && $PYTHON_MINOR -lt 9 ]]; then
     print_error "Python 3.9+ required. Found: $PYTHON_VER"
     exit 1
 fi
@@ -136,76 +139,75 @@ fi
 
 # Core AI/ML Libraries
 install_packages "core AI libraries" \
-    "openai==1.12.0" \
-    "anthropic==0.15.0" \
-    "python-dotenv==1.0.1"
+    "openai>=1.30.0" \
+    "anthropic>=0.25.0" \
+    "python-dotenv>=1.0.0"
 
 # LangChain Ecosystem
 install_packages "LangChain ecosystem" \
-    "langchain==0.1.11" \
-    "langchain-openai==0.0.8" \
-    "langchain-community==0.0.25" \
-    "langchain-experimental==0.0.54" \
-    "langgraph==0.0.26" \
-    "langsmith==0.1.15"
+    "langchain>=0.2.0" \
+    "langchain-openai>=0.1.0" \
+    "langchain-community>=0.2.0" \
+    "langgraph>=0.1.0" \
+    "langsmith>=0.1.0"
 
 # LlamaIndex
 install_packages "LlamaIndex" \
-    "llama-index==0.10.12" \
-    "llama-index-llms-openai==0.1.7" \
-    "llama-index-embeddings-openai==0.1.6"
+    "llama-index>=0.10.50" \
+    "llama-index-llms-openai>=0.1.20" \
+    "llama-index-embeddings-openai>=0.1.10"
 
 # Multi-Agent Frameworks
 install_packages "multi-agent frameworks" \
-    "crewai==0.22.5" \
-    "crewai-tools==0.1.6" \
-    "pyautogen==0.2.16"
+    "crewai>=0.30.0" \
+    "crewai-tools>=0.4.0" \
+    "pyautogen>=0.2.30"
 
 # Vector Databases
 install_packages "vector databases" \
-    "chromadb==0.4.22" \
-    "weaviate-client==4.4.1" \
-    "qdrant-client==1.7.3"
+    "chromadb>=0.5.0" \
+    "weaviate-client>=4.6.0" \
+    "qdrant-client>=1.9.0"
 
 # Web Tools & APIs
 install_packages "web tools" \
-    "requests==2.31.0" \
-    "beautifulsoup4==4.12.3" \
-    "httpx==0.27.0" \
-    "aiohttp==3.9.3"
+    "requests>=2.31.0" \
+    "beautifulsoup4>=4.12.0" \
+    "httpx>=0.27.0" \
+    "aiohttp>=3.9.0"
 
 # Development Tools
 install_packages "development tools" \
-    "fastapi==0.109.2" \
-    "uvicorn[standard]==0.27.1" \
-    "streamlit==1.31.1" \
-    "chainlit==1.0.200" \
-    "jupyter==1.0.0" \
-    "ipykernel==6.29.2"
+    "fastapi>=0.110.0" \
+    "uvicorn[standard]>=0.29.0" \
+    "streamlit>=1.35.0" \
+    "chainlit>=1.1.0" \
+    "jupyter>=1.0.0" \
+    "ipykernel>=6.29.0"
 
 # Data Processing
 install_packages "data processing libraries" \
-    "pandas==2.2.1" \
-    "numpy==1.26.4" \
-    "matplotlib==3.8.3" \
-    "plotly==5.18.0"
+    "pandas>=2.2.0" \
+    "numpy>=1.26.0" \
+    "matplotlib>=3.8.0" \
+    "plotly>=5.20.0"
 
 # Document Processing
 install_packages "document processing" \
-    "pypdf==4.0.1" \
-    "python-docx==1.1.0" \
-    "tiktoken==0.6.0"
+    "pypdf>=4.2.0" \
+    "python-docx>=1.1.0" \
+    "tiktoken>=0.7.0"
 
 # Evaluation & Safety
 install_packages "evaluation tools" \
-    "guardrails-ai==0.4.5" \
-    "ragas==0.1.1"
+    "guardrails-ai>=0.5.0" \
+    "ragas>=0.1.10"
 
 # Utilities
 install_packages "utilities" \
-    "rich==13.7.0" \
-    "typer==0.9.0" \
-    "pydantic==2.6.1"
+    "rich>=13.7.0" \
+    "typer>=0.12.0" \
+    "pydantic>=2.7.0"
 
 # Generate requirements.txt
 if [[ "$USE_UV" == true ]]; then

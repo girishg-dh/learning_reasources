@@ -54,6 +54,25 @@ check_command "python3" || exit 1
 check_command "git" || exit 1
 check_command "curl" || print_warning "curl not found - some downloads may fail"
 
+# Check for uv, install if missing
+if ! command -v uv &> /dev/null; then
+    print_warning "uv not found. Installing uv for faster package management..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    export PATH="$HOME/.cargo/bin:$PATH"
+    
+    # Verify uv installation
+    if ! command -v uv &> /dev/null; then
+        print_warning "uv installation failed. Falling back to pip."
+        USE_UV=false
+    else
+        print_success "uv installed successfully"
+        USE_UV=true
+    fi
+else
+    print_success "uv found"
+    USE_UV=true
+fi
+
 # Check Python version
 PYTHON_VER=$(python3 --version | cut -d" " -f2 | cut -d"." -f1,2)
 if [[ $(echo "$PYTHON_VER >= 3.9" | bc -l) -eq 0 ]]; then
@@ -67,104 +86,133 @@ print_status "Creating project structure..."
 mkdir -p $PROJECT_NAME
 cd $PROJECT_NAME
 
-# Create virtual environment
+# Create virtual environment using uv or python
 print_status "Creating virtual environment..."
-python3 -m venv $VENV_NAME
+if [[ "$USE_UV" == true ]]; then
+    uv venv $VENV_NAME --python python3
+    print_success "Virtual environment created with uv"
+else
+    python3 -m venv $VENV_NAME
+    print_success "Virtual environment created with python venv"
+fi
 
 # Activate virtual environment
+print_status "Activating virtual environment..."
 source $VENV_NAME/bin/activate
-print_success "Virtual environment activated"
 
-# Upgrade pip
-print_status "Upgrading pip..."
-pip install --upgrade pip setuptools wheel
+# Verify virtual environment is active
+if [[ "$VIRTUAL_ENV" == "" ]]; then
+    print_error "Failed to activate virtual environment"
+    exit 1
+fi
+print_success "Virtual environment activated: $VIRTUAL_ENV"
+
+# Function to install packages
+install_packages() {
+    local description="$1"
+    shift
+    local packages=("$@")
+    
+    print_status "Installing $description..."
+    
+    if [[ "$USE_UV" == true ]]; then
+        # uv can install multiple packages in one command more efficiently
+        uv pip install "${packages[@]}"
+    else
+        # Fallback to pip with optimizations
+        pip install --no-cache-dir "${packages[@]}"
+    fi
+}
+
+# Upgrade pip/uv
+if [[ "$USE_UV" == true ]]; then
+    print_status "uv is self-updating, ensuring latest version..."
+    # uv updates itself, but we can sync the environment
+    uv pip install --upgrade pip setuptools wheel
+else
+    print_status "Upgrading pip..."
+    pip install --upgrade pip setuptools wheel
+fi
 
 # Core AI/ML Libraries
-print_status "Installing core AI libraries..."
-pip install --no-cache-dir \
-    openai==1.12.0 \
-    anthropic==0.15.0 \
-    python-dotenv==1.0.1
+install_packages "core AI libraries" \
+    "openai==1.12.0" \
+    "anthropic==0.15.0" \
+    "python-dotenv==1.0.1"
 
 # LangChain Ecosystem
-print_status "Installing LangChain ecosystem..."
-pip install --no-cache-dir \
-    langchain==0.1.11 \
-    langchain-openai==0.0.8 \
-    langchain-community==0.0.25 \
-    langchain-experimental==0.0.54 \
-    langgraph==0.0.26 \
-    langsmith==0.1.15
+install_packages "LangChain ecosystem" \
+    "langchain==0.1.11" \
+    "langchain-openai==0.0.8" \
+    "langchain-community==0.0.25" \
+    "langchain-experimental==0.0.54" \
+    "langgraph==0.0.26" \
+    "langsmith==0.1.15"
 
 # LlamaIndex
-print_status "Installing LlamaIndex..."
-pip install --no-cache-dir \
-    llama-index==0.10.12 \
-    llama-index-llms-openai==0.1.7 \
-    llama-index-embeddings-openai==0.1.6
+install_packages "LlamaIndex" \
+    "llama-index==0.10.12" \
+    "llama-index-llms-openai==0.1.7" \
+    "llama-index-embeddings-openai==0.1.6"
 
 # Multi-Agent Frameworks
-print_status "Installing multi-agent frameworks..."
-pip install --no-cache-dir \
-    crewai==0.22.5 \
-    crewai-tools==0.1.6 \
-    pyautogen==0.2.16
+install_packages "multi-agent frameworks" \
+    "crewai==0.22.5" \
+    "crewai-tools==0.1.6" \
+    "pyautogen==0.2.16"
 
 # Vector Databases
-print_status "Installing vector databases..."
-pip install --no-cache-dir \
-    chromadb==0.4.22 \
-    weaviate-client==4.4.1 \
-    qdrant-client==1.7.3
+install_packages "vector databases" \
+    "chromadb==0.4.22" \
+    "weaviate-client==4.4.1" \
+    "qdrant-client==1.7.3"
 
 # Web Tools & APIs
-print_status "Installing web tools..."
-pip install --no-cache-dir \
-    requests==2.31.0 \
-    beautifulsoup4==4.12.3 \
-    httpx==0.27.0 \
-    aiohttp==3.9.3
+install_packages "web tools" \
+    "requests==2.31.0" \
+    "beautifulsoup4==4.12.3" \
+    "httpx==0.27.0" \
+    "aiohttp==3.9.3"
 
 # Development Tools
-print_status "Installing development tools..."
-pip install --no-cache-dir \
-    fastapi==0.109.2 \
-    uvicorn[standard]==0.27.1 \
-    streamlit==1.31.1 \
-    chainlit==1.0.200 \
-    jupyter==1.0.0 \
-    ipykernel==6.29.2
+install_packages "development tools" \
+    "fastapi==0.109.2" \
+    "uvicorn[standard]==0.27.1" \
+    "streamlit==1.31.1" \
+    "chainlit==1.0.200" \
+    "jupyter==1.0.0" \
+    "ipykernel==6.29.2"
 
 # Data Processing
-print_status "Installing data processing libraries..."
-pip install --no-cache-dir \
-    pandas==2.2.1 \
-    numpy==1.26.4 \
-    matplotlib==3.8.3 \
-    plotly==5.18.0
+install_packages "data processing libraries" \
+    "pandas==2.2.1" \
+    "numpy==1.26.4" \
+    "matplotlib==3.8.3" \
+    "plotly==5.18.0"
 
 # Document Processing
-print_status "Installing document processing..."
-pip install --no-cache-dir \
-    pypdf==4.0.1 \
-    python-docx==1.1.0 \
-    tiktoken==0.6.0
+install_packages "document processing" \
+    "pypdf==4.0.1" \
+    "python-docx==1.1.0" \
+    "tiktoken==0.6.0"
 
 # Evaluation & Safety
-print_status "Installing evaluation tools..."
-pip install --no-cache-dir \
-    guardrails-ai==0.4.5 \
-    ragas==0.1.1
+install_packages "evaluation tools" \
+    "guardrails-ai==0.4.5" \
+    "ragas==0.1.1"
 
 # Utilities
-print_status "Installing utilities..."
-pip install --no-cache-dir \
-    rich==13.7.0 \
-    typer==0.9.0 \
-    pydantic==2.6.1
+install_packages "utilities" \
+    "rich==13.7.0" \
+    "typer==0.9.0" \
+    "pydantic==2.6.1"
 
 # Generate requirements.txt
-pip freeze > requirements.txt
+if [[ "$USE_UV" == true ]]; then
+    uv pip freeze > requirements.txt
+else
+    pip freeze > requirements.txt
+fi
 print_success "Generated requirements.txt"
 
 # Create project structure
@@ -455,6 +503,15 @@ echo "1. Activate environment: source $VENV_NAME/bin/activate"
 echo "2. Configure API keys: cp .env.template .env && nano .env"
 echo "3. Open VS Code: code ."
 echo "4. Start learning: Begin with Week 1!"
+echo ""
+if [[ "$USE_UV" == true ]]; then
+    echo "💨 Using uv for fast package management!"
+    echo "   Add packages: uv pip install <package>"
+    echo "   Update packages: uv pip install --upgrade <package>"
+else
+    echo "📦 Using pip for package management"
+    echo "   Add packages: pip install <package>"
+fi
 echo ""
 echo "📁 Project location: $(pwd)"
 echo "🐍 Python interpreter: $(pwd)/$VENV_NAME/bin/python"

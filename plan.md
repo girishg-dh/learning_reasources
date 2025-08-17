@@ -5,7 +5,7 @@
 - **Environment Setup**: Python 3.9+, OpenAI API key, Git
 - **Core Libraries**: `pip install langchain openai chromadb streamlit fastapi`
 - **Recommended IDE**: VS Code with Python extensions
-- [GPT Locally with LMStudio](https://lmstudio.ai/blog/gpt-oss)
+- [GPT Locally with LMStudio](https://lmstudio.ai/blog/gpt-oss) , [How to run gpt-oss locally with LM Studio](https://cookbook.openai.com/articles/gpt-oss/run-locally-lmstudio)
 
 ---
 

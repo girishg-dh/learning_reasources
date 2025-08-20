@@ -22,3 +22,6 @@ chmod +x setup_agentic_ai_env.sh
 💨 Using uv for fast package management!
    Add packages: uv pip install <package>
    Update packages: uv pip install --upgrade <package>
+
+✨ Example Notebooks
+1. [LangChain LLM](notebooks/)

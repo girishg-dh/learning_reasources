@@ -25,5 +25,5 @@ chmod +x setup_agentic_ai_env.sh
 
 ✨ Example Notebooks
 1. [LangChain LLM](notebooks/LangChain)
-2. [Functions, Tools and Agents with LangChain](notebooks/notebooks/Functions_Tools_n_Agents)
+2. [Functions, Tools and Agents with LangChain](notebooks/Functions_Tools_n_Agents)
 3. [Function Calling](notebooks/LangChain_Chat_with_Data)

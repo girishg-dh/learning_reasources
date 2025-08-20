@@ -8,6 +8,17 @@
 - [GPT Locally with LMStudio](https://lmstudio.ai/blog/gpt-oss) , [How to run gpt-oss locally with LM Studio](https://cookbook.openai.com/articles/gpt-oss/run-locally-lmstudio)
 
 ---
+## 📅 **Quick Navigation: Week-wise Sections**
+- [Week 1: Foundations & First Agent](#week-1-foundations--first-agent)
+- [Week 2: Tool Integration & API Mastery](#week-2-tool-integration--api-mastery)
+- [Week 3: Advanced RAG & Memory Systems](#week-3-advanced-rag--memory-systems)
+- [Week 4: Multi-Step Reasoning & Planning](#week-4-multi-step-reasoning--planning)
+- [Week 5: Multi-Agent Systems](#week-5-multi-agent-systems)
+- [Week 6: Production-Ready Systems](#week-6-production-ready-systems)
+- [Week 7: Deployment & Scaling](#week-7-deployment--scaling)
+- [Week 8: Capstone Integration Project](#week-8-capstone-integration-project)
+
+---
 
 ## **Week 1: Foundations & First Agent**
 **Time Investment**: 6-7 hours

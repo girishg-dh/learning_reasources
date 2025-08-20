@@ -24,4 +24,6 @@ chmod +x setup_agentic_ai_env.sh
    Update packages: uv pip install --upgrade <package>
 
 ✨ Example Notebooks
-1. [LangChain LLM](notebooks/)
+1. [LangChain LLM](notebooks/LangChain)
+2. [Functions, Tools and Agents with LangChain](notebooks/Functions, Tools and Agents with LangChain)
+3. [Function Calling](notebooks/LangChain Chat with Your Data)

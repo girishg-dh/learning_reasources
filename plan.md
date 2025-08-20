@@ -301,6 +301,7 @@ Apply your MLOps experience to LLM agent monitoring and evaluation
 - [Awesome AI Agents](https://github.com/e2b-dev/awesome-ai-agents) - Comprehensive resource collection
 - [LangChain Templates](https://github.com/langchain-ai/langchain/tree/master/templates) - Production-ready patterns
 - [CrewAI Examples](https://github.com/crewAI-inc/crewAI-examples) - Multi-agent implementations
+- [LanChain Cookbooks](https://github.com/langchain-ai/langchain/tree/master/cookbook) - Ready cookbooks with LangChain
 
 ### Blogs & Papers to Follow
 - Lilian Weng's blog for theoretical foundations

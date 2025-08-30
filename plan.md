@@ -9,7 +9,7 @@
 
 ---
 ## 📅 **Quick Navigation: Week-wise Sections**
-- [Week 1: Foundations & First Agent](#week-1-foundations--first-agent)
+- [Week 1: Foundations & First Agent](#week-1-foundations--first-agent) ✅
 - [Week 2: Tool Integration & API Mastery](#week-2-tool-integration--api-mastery)
 - [Week 3: Advanced RAG & Memory Systems](#week-3-advanced-rag--memory-systems)
 - [Week 4: Multi-Step Reasoning & Planning](#week-4-multi-step-reasoning--planning)
@@ -21,7 +21,7 @@
 ---
 
 ## **Week 1: Foundations & First Agent**
-**Time Investment**: 6-7 hours
+**Time Investment**: 6-7 hours ✅
 **Goal**: Understand core concepts and build your first working agent
 
 ### Theory (2-3 hours)
@@ -30,13 +30,13 @@
 - **Essential Reading**: Lilian Weng's "LLM Powered Autonomous Agents" blog post
 - **Key Concepts**: ReAct pattern, Tool Use, Planning, Memory architecture
 
-### Hands-On Project (3-4 hours)
+### Hands-On Project (3-4 hours) ✅
 **Project**: CLI Question-Answering Agent
 - Build a simple agent using LangChain that can answer questions from a local document set
 - Implement basic ReAct reasoning pattern
 - Add a simple web search tool integration
 
-### Success Metrics
+### Success Metrics ✅
 - Agent can process documents and answer questions
 - Understanding of agent architecture components
 - Functional development environment

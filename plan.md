@@ -63,26 +63,26 @@ Leverage your experience with API design and error handling from ML model deploy
 
 ---
 
-## **Week 3: Advanced RAG & Memory Systems**
+[## **Week 3: Advanced RAG & Memory Systems**](https://github.com/girishg-dh/agentic_ai_learning/blob/master/week_03_rag_memory/src/README.md) ✅
 **Time Investment**: 6-7 hours
 **Goal**: Build sophisticated memory and retrieval systems
 
 ### Course Work (2-3 hours)
-- Complete "Building Agentic RAG with LlamaIndex" course
-- Study vector database optimization techniques
+- Complete "Building Agentic RAG with LlamaIndex" course ✅
+- Study vector database optimization techniques ✅
 
-### Hands-On Project (3-4 hours)
-**Project**: Personal Research Assistant
-- Implement multiple memory types (short-term, long-term, semantic)
-- Build advanced RAG with query transformation and routing
-- Add conversation history persistence
+### Hands-On Project (3-4 hours) ✅
+**Project**: Personal Research Assistant ✅
+- Implement multiple memory types (short-term, long-term, semantic) ✅
+- Build advanced RAG with query transformation and routing ✅
+- Add conversation history persistence ✅
 
 ### ML Engineer Edge
-Apply your knowledge of embedding models and vector similarity for enhanced retrieval
+Apply your knowledge of embedding models and vector similarity for enhanced retrieval ✅
 
 ---
 
-## **Week 4: Multi-Step Reasoning & Planning**
+## **Week 4: Multi-Step Reasoning & Planning** 
 **Time Investment**: 6-7 hours
 **Goal**: Build agents that can break down complex problems
 

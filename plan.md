@@ -63,7 +63,7 @@ Leverage your experience with API design and error handling from ML model deploy
 
 ---
 
-[## **Week 3: Advanced RAG & Memory Systems**](https://github.com/girishg-dh/agentic_ai_learning/blob/master/week_03_rag_memory/src/README.md) ✅
+## [**Week 3: Advanced RAG & Memory Systems**](https://github.com/girishg-dh/agentic_ai_learning/blob/master/week_03_rag_memory/src/README.md) ✅
 **Time Investment**: 6-7 hours
 **Goal**: Build sophisticated memory and retrieval systems
 

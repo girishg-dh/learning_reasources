@@ -43,7 +43,7 @@
 
 ---
 
-## [**Week 2: Tool Integration & API Mastery**](./agentic_ai_learning/blob/master/week_02_tools/src/README.md) ✅
+## [**Week 2: Tool Integration & API Mastery**](../agentic_ai_learning/blob/master/week_02_tools/src/README.md) ✅
 **Time Investment**: 6-7 hours
 **Goal**: Enable agents to interact with external systems
 

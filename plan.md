@@ -10,7 +10,7 @@
 ---
 ## 📅 **Quick Navigation: Week-wise Sections**
 - [Week 1: Foundations & First Agent](#week-1-foundations--first-agent) ✅
-- [Week 2: Tool Integration & API Mastery](#week-2-tool-integration--api-mastery)
+- [Week 2: Tool Integration & API Mastery](#week-2-tool-integration--api-mastery)✅
 - [Week 3: Advanced RAG & Memory Systems](#week-3-advanced-rag--memory-systems)
 - [Week 4: Multi-Step Reasoning & Planning](#week-4-multi-step-reasoning--planning)
 - [Week 5: Multi-Agent Systems](#week-5-multi-agent-systems)
@@ -20,7 +20,7 @@
 
 ---
 
-## **Week 1: Foundations & First Agent**
+## **Week 1: Foundations & First Agent** 
 **Time Investment**: 6-7 hours ✅
 **Goal**: Understand core concepts and build your first working agent
 
@@ -43,20 +43,20 @@
 
 ---
 
-## **Week 2: Tool Integration & API Mastery**
+## **Week 2: Tool Integration & API Mastery** ✅
 **Time Investment**: 6-7 hours
 **Goal**: Enable agents to interact with external systems
 
 ### Learning Focus (2 hours)
-- OpenAI Function Calling deep dive
-- API integration patterns in LangChain
-- Error handling and retry mechanisms
+- OpenAI Function Calling deep dive ✅
+- API integration patterns in LangChain ✅
+- Error handling and retry mechanisms ✅
 
 ### Hands-On Project (4-5 hours)
-**Project**: Multi-Tool Weather & News Assistant
-- Integrate multiple real APIs (weather, news, stock prices)
-- Implement robust error handling and fallback mechanisms
-- Add structured output validation
+**Project**: Multi-Tool Weather & News Assistant ✅
+- Integrate multiple real APIs (weather, news, stock prices) ✅
+- Implement robust error handling and fallback mechanisms ✅
+- Add structured output validation ✅
 
 ### ML Engineer Advantage
 Leverage your experience with API design and error handling from ML model deployment

@@ -20,7 +20,7 @@
 
 ---
 
-## **Week 1: Foundations & First Agent** 
+## [**Week 1: Foundations & First Agent**](https://github.com/girishg-dh/agentic_ai_learning/blob/master/qna-agent/README.md)
 **Time Investment**: 6-7 hours ✅
 **Goal**: Understand core concepts and build your first working agent
 
@@ -43,7 +43,7 @@
 
 ---
 
-## **Week 2: Tool Integration & API Mastery** ✅
+## [**Week 2: Tool Integration & API Mastery**](./agentic_ai_learning/blob/master/week_02_tools/src/README.md) ✅
 **Time Investment**: 6-7 hours
 **Goal**: Enable agents to interact with external systems
 

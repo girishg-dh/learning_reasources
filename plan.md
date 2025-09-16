@@ -348,11 +348,6 @@ By completion, you'll have:
 
 
 ----
-Of course. Here is a structured 12-week project plan designed to guide you through all three advanced projects.
-
-This timeline is ambitious but achievable for an engineer with your background. Each 4-week block is a dedicated sprint to produce a high-impact portfolio piece.
-
----
 
 ### **Project 1: The Local-First, Privacy-Centric Agent (Weeks 1-4)**
 
